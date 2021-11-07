@@ -387,6 +387,10 @@ if(ADIOS2_USE_SST AND NOT WIN32)
   if(ADIOS2_HAVE_MPI)
     set(ADIOS2_SST_HAVE_MPI TRUE)
   endif()
+  find_package(UCX)
+  if(UCX_FOUND)
+    set(ADIOS2_SST_HAVE_UCX TRUE)
+  endif()
 endif()
 
 # DAOS
