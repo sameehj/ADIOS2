@@ -459,6 +459,7 @@ static void *UcxReadRemoteMemory(CP_Services Svcs, DP_RS_Stream Stream_v,
     ret->req = ucp_get_nbx(RS_Stream->WriterEP[Rank], Buffer, Length,
                            (uint64_t)Addr, rkey_p, &param);
     status = UCS_PTR_STATUS(ret->req);
+    ucp_rkey_destroy(rkey_p);
     if (status != UCS_OK && status != UCS_INPROGRESS)
     {
         Svcs->verbose(RS_Stream->CP_Stream, DPCriticalVerbose,
